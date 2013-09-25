@@ -39,11 +39,11 @@ Event.observe(window, 'load', function() {
 	Event.observe('canvas', 'click', function(e) {
 		demos.rc2d.onClick(world, Event.pointerX(e) - canvasLeft, Event.pointerY(e) - canvasTop);
 	});
-	/*Event.observe('canvas', 'contextmenu', function(e) {
+	Event.observe('canvas', 'contextmenu', function(e) {
 		if (e.preventDefault) e.preventDefault();
-		setupPrevWorld();
+		demos.rc2d.onRightClick(world, Event.pointerX(e) - canvasLeft, Event.pointerY(e) - canvasTop);
 		return false;
-	});*/
+	});
 	step();
 });
 
