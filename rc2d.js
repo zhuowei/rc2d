@@ -20,7 +20,7 @@ demos.rc2d.createBall = function(world, x, y, rad, type, fixed) {
 }
 
 demos.rc2d.onClick = function(world, x, y) {
-	var texture = Math.floor(Math.random() * 16 * 15);
+	var texture = Math.floor(Math.random() * 16 * 10);
 	demos.rc2d.createBall(world, x, y, 10 + Math.floor(Math.random() * 20), texture, false);
 }
 
