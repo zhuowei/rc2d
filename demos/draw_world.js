@@ -58,13 +58,8 @@ function drawShape(shape, context, body) {
 			var segments = 16.0;
 			var theta = 0.0;
 			var dtheta = 2.0 * Math.PI / segments;
-			ctx.save();
-			ctx.beginPath();
-			ctx.arc(pos.x, pos.y, r, 0, Math.PI * 2, true);
-			ctx.clip();
 			ctx.drawImage(terrainPng, (body["texture"] & 0xf) * 16, (body["texture"] >> 4) * 16, 16, 16, 
 				pos.x - r, pos.y - r, r * 2, r * 2);
-			ctx.restore();
 		}
 		break;
 	case b2Shape.e_polyShape:

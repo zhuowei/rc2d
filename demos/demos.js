@@ -34,7 +34,8 @@ Event.observe(window, 'load', function() {
 	canvasHeight = parseInt(canvasElm.height);
 	canvasTop = parseInt(canvasElm.style.top);
 	canvasLeft = parseInt(canvasElm.style.left);
-	terrainPng = $('terrainpng')
+	
+	terrainPng = processTerrainPng($('terrainpng'));
 	Event.observe('canvas', 'click', function(e) {
 		demos.rc2d.onClick(world, Event.pointerX(e) - canvasLeft, Event.pointerY(e) - canvasTop);
 	});
@@ -45,3 +46,22 @@ Event.observe(window, 'load', function() {
 	});*/
 	step();
 });
+
+function processTerrainPng(img) {
+	var c = document.createElement("canvas");
+	c.width = img.width;
+	c.height = img.height;
+	var ct = c.getContext("2d");
+	for (var x = 0; x < 16; x++) {
+		for (var y = 0; y < 16; y++) {
+			ct.save();
+			ct.beginPath();
+			ct.arc((x * 16) + 8, (y * 16) + 8, 8, 0, Math.PI * 2, true);
+			ct.clip();
+			ct.drawImage(img, x * 16, y * 16, 16, 16, 
+				x * 16, y * 16, 16, 16);
+			ct.restore();
+		}
+	}
+	return c;
+}
